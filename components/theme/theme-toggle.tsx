@@ -1,0 +1,46 @@
+"use client";
+
+import type { MouseEvent } from "react";
+import { useTheme } from "@/components/theme/theme-provider";
+
+const order = ["system", "light", "dark"] as const;
+
+const labels = {
+  system: "跟随系统",
+  light: "亮色",
+  dark: "暗色",
+} as const;
+
+export function ThemeToggle() {
+  const { theme, resolvedTheme, setTheme } = useTheme();
+
+  function handleClick(event: MouseEvent<HTMLButtonElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const index = order.indexOf(theme);
+    const nextTheme = order[(index + 1) % order.length];
+
+    setTheme(nextTheme, {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label={`切换主题，当前为${labels[theme]}`}
+      className="group relative inline-flex h-8 w-16 items-center border-2 border-neon-cyan bg-panel text-foreground shadow-[0_0_18px_var(--glow-cyan)] transition-colors"
+    >
+      <span
+        className="absolute left-1 top-1 h-5 w-5 bg-neon-cyan shadow-[0_0_14px_var(--neon-cyan)] transition-transform group-hover:bg-neon-magenta"
+        style={{ transform: resolvedTheme === "dark" ? "translateX(32px)" : "translateX(0)" }}
+      />
+      <span className="sr-only">{labels[theme]}</span>
+      <span aria-hidden className="relative z-10 grid w-full grid-cols-2 text-[10px]">
+        <span>☼</span>
+        <span>☾</span>
+      </span>
+    </button>
+  );
+}
