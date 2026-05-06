@@ -1,4 +1,5 @@
 import { Container } from "@/components/container";
+import { AnimatedSection } from "@/components/motion/animated-section";
 import { NeonButton } from "@/components/neon-button";
 import { NeonPanel } from "@/components/neon-panel";
 import { PostList } from "@/features/blog/post-list";
@@ -10,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <Container className="py-20 sm:py-32">
-        <section>
+        <AnimatedSection>
           <p className="font-mono text-sm uppercase tracking-[0.3em] text-neon-orange">
             &gt; synthetic journal online
           </p>
@@ -26,7 +27,7 @@ export default async function Home() {
               关于我
             </NeonButton>
           </div>
-        </section>
+        </AnimatedSection>
       </Container>
       <Container className="pb-24">
         <NeonPanel className="mb-8">
