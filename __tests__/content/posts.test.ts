@@ -1,3 +1,5 @@
+import { render, screen } from "@testing-library/react";
+import { createElement } from "react";
 import { describe, expect, test } from "vitest";
 import { formatChineseDate } from "@/lib/format/date";
 import { parsePostMeta } from "@/lib/content/markdown";
@@ -26,6 +28,17 @@ describe("content posts", () => {
       title: "霓虹工程日志",
       order: 1,
     });
+  });
+
+  test("renders post bodies without frontmatter", async () => {
+    const post = await getPostBySlug("hello-neon");
+    expect(post).not.toBeNull();
+
+    render(createElement(post!.body));
+
+    expect(screen.getByText(/这是/)).toBeInTheDocument();
+    expect(screen.queryByText(/publishedAt/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/status:/)).not.toBeInTheDocument();
   });
 
   test("filters featured posts", async () => {

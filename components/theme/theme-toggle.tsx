@@ -3,8 +3,6 @@
 import type { MouseEvent } from "react";
 import { useTheme } from "@/components/theme/theme-provider";
 
-const order = ["system", "light", "dark"] as const;
-
 const labels = {
   system: "跟随系统",
   light: "亮色",
@@ -16,8 +14,7 @@ export function ThemeToggle() {
 
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
-    const index = order.indexOf(theme);
-    const nextTheme = order[(index + 1) % order.length];
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
 
     setTheme(nextTheme, {
       x: rect.left + rect.width / 2,

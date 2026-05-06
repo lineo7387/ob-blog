@@ -1,10 +1,11 @@
 import react from "@vitejs/plugin-react";
 import mdx from "@mdx-js/rollup";
+import remarkFrontmatter from "remark-frontmatter";
 import { defineConfig } from "vitest/config";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [tsconfigPaths(), mdx(), react()],
+  plugins: [tsconfigPaths(), mdx({ remarkPlugins: [remarkFrontmatter] }), react()],
   test: {
     environment: "jsdom",
     globals: false,

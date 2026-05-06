@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
 
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: ["remark-frontmatter"],
+  },
 });
 
 export default withMDX(nextConfig);

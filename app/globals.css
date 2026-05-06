@@ -64,6 +64,26 @@ html.dark {
   color-scheme: dark;
 }
 
+::view-transition-group(root),
+::view-transition-image-pair(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+
+html[data-theme-transition="to-dark"]::view-transition-old(root) {
+  z-index: 2;
+}
+
+html[data-theme-transition="to-dark"]::view-transition-new(root) {
+  z-index: 1;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -75,6 +95,12 @@ body {
   transition:
     background-color 240ms linear,
     color 240ms linear;
+}
+
+html[data-theme-switching] *,
+html[data-theme-switching] *::before,
+html[data-theme-switching] *::after {
+  transition: none !important;
 }
 
 body::before,
@@ -120,5 +146,13 @@ body::after {
     animation-duration: 1ms !important;
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
+  }
+
+  ::view-transition-group(root),
+  ::view-transition-image-pair(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }
