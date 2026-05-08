@@ -12,6 +12,39 @@ describe("category display metadata", () => {
     expect(react.icon.path.length).toBeGreaterThan(100);
   });
 
+  test("uses the OpenJDK technology logo for Java metadata", () => {
+    const java = getCategoryDisplayMeta("java");
+
+    expect(java.description).toBe("Java 语言基础、工程实践与生态要点。");
+    expect(java.accent).toBe("#F89820");
+    expect(java.icon.title).toBe("OpenJDK");
+    expect(java.icon.title).not.toBe("Code");
+  });
+
+  test("keeps mapped technical categories on Simple Icons logos", () => {
+    const mappedTechnologyCategories = [
+      "astro",
+      "electron",
+      "express",
+      "fastapi",
+      "htmx",
+      "java",
+      "javascript",
+      "mysql",
+      "nodejs",
+      "python",
+      "react",
+      "react-native",
+      "springboot",
+      "typescript",
+      "vue",
+    ];
+
+    for (const slug of mappedTechnologyCategories) {
+      expect(getCategoryDisplayMeta(slug).icon.title).not.toBe("Code");
+    }
+  });
+
   test("returns fallback metadata for unknown categories", () => {
     const meta = getCategoryDisplayMeta("unknown-stack");
 
