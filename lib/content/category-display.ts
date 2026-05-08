@@ -56,6 +56,7 @@ const categoryDisplayMeta: Record<string, CategoryDisplayMeta> = {
   },
   express: {
     description: "Node.js Web 服务、路由、中间件与静态资源。",
+    accent: "#22D3EE",
     icon: siExpress,
   },
   fastapi: {

@@ -21,6 +21,14 @@ describe("category display metadata", () => {
     expect(java.icon.title).not.toBe("Code");
   });
 
+  test("keeps the Express icon visible on dark category cards", () => {
+    const express = getCategoryDisplayMeta("express");
+
+    expect(express.icon.title).toBe("Express");
+    expect(express.icon.hex).toBe("000000");
+    expect(express.accent).toBe("#22D3EE");
+  });
+
   test("keeps mapped technical categories on Simple Icons logos", () => {
     const mappedTechnologyCategories = [
       "astro",
