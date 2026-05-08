@@ -42,15 +42,23 @@ export function CategoryGrid({ categories }: { categories: CategoryGridItem[] })
                     {category.count} 篇文章
                   </p>
                 </div>
-                <svg
-                  aria-hidden="true"
-                  data-testid="category-icon"
-                  viewBox="0 0 24 24"
-                  className="h-10 w-10 shrink-0 drop-shadow-[0_0_10px_currentColor]"
-                  style={{ color: category.accent }}
+                <span
+                  className="flex h-14 w-14 shrink-0 items-center justify-center border bg-background/70 shadow-[0_0_22px_var(--category-accent)] transition-transform duration-200 ease-linear group-hover:scale-105"
+                  style={{
+                    borderColor: category.accent,
+                    color: category.accent,
+                    "--category-accent": category.accent,
+                  }}
                 >
-                  <path fill="currentColor" d={category.icon.path} />
-                </svg>
+                  <svg
+                    aria-hidden="true"
+                    data-testid="category-icon"
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8 drop-shadow-[0_0_10px_currentColor]"
+                  >
+                    <path fill="currentColor" d={category.icon.path} />
+                  </svg>
+                </span>
               </div>
               <p className="mt-5 text-sm leading-7 text-muted">{category.description}</p>
             </NeonPanel>
