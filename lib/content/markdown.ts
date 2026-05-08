@@ -90,7 +90,7 @@ function readStatus(value: unknown): PostMeta["status"] {
   throw new Error("Invalid frontmatter field: status");
 }
 
-export function parsePostMeta(source: string): Omit<PostMeta, "slug"> {
+export function parsePostMeta(source: string): Omit<PostMeta, "slug" | "href" | "category"> {
   const parsed = matter(source);
   const data = parsed.data as PostFrontmatter;
 

@@ -10,7 +10,7 @@ export function PostCard({ post }: { post: PostMetaType }) {
       <PostMeta post={post} />
       <h2 className="mt-5 font-heading text-2xl font-bold text-neon-cyan drop-shadow-[0_0_8px_var(--neon-cyan)]">
         <Link
-          href={`/blog/${post.slug}`}
+          href={post.href}
           className="outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neon-cyan"
         >
           {post.title}

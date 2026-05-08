@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import type { Route } from "next";
 
 export type PostStatus = "published" | "draft";
 
@@ -12,18 +13,29 @@ export type PostSeries = {
   order: number;
 };
 
+export type PostCategory = {
+  slug: string;
+  title: string;
+};
+
 export type PostMeta = {
   slug: string;
+  href: Route;
   title: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;
   status: PostStatus;
   tags: string[];
+  category?: PostCategory;
   cover?: PostCover;
   series?: PostSeries;
   readingTime: number;
   featured: boolean;
+};
+
+export type CategorySummary = PostCategory & {
+  count: number;
 };
 
 export type Post = PostMeta & {
