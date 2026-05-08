@@ -46,32 +46,32 @@ const fallbackMeta: CategoryDisplayMeta = {
 
 const categoryDisplayMeta: Record<string, CategoryDisplayMeta> = {
   astro: {
-    description: "内容驱动、岛屿架构与静态站点工程。",
+    description: "内容驱动站点、组件岛与 Astro 5 实践。",
     icon: siAstro,
   },
   electron: {
-    description: "桌面应用、跨端集成与打包发布。",
+    description: "桌面应用、IPC、安全、打包与性能。",
     icon: siElectron,
   },
   express: {
-    description: "Node.js 服务、路由、中间件与接口设计。",
+    description: "Node.js Web 服务、路由、中间件与静态资源。",
     icon: siExpress,
   },
   fastapi: {
-    description: "类型驱动的 Python API、异步服务与工程实践。",
+    description: "Python API、类型声明、异步服务与工程化。",
     icon: siFastapi,
   },
   htmx: {
-    description: "HTML 优先的交互增强与轻量前端架构。",
+    description: "HTML 优先的交互增强与服务端渲染体验。",
     icon: siHtmx,
   },
   java: {
-    description: "JVM、并发、集合、IO 与后端工程实践。",
+    description: "Java 语言基础、工程实践与生态要点。",
     accent: "#F89820",
     icon: siSpringboot,
   },
   javascript: {
-    description: "语言机制、异步模型、DOM 与工程化实践。",
+    description: "语言机制、浏览器 API 与现代工程基础。",
     icon: siJavascript,
   },
   mysql: {
@@ -79,11 +79,11 @@ const categoryDisplayMeta: Record<string, CategoryDisplayMeta> = {
     icon: siMysql,
   },
   nodejs: {
-    description: "运行时、包管理、服务端框架与性能调优。",
+    description: "运行时、模块系统、异步 I/O 与工程实践。",
     icon: siNodedotjs,
   },
   python: {
-    description: "语言基础、自动化、数据处理与服务开发。",
+    description: "语法、生态、服务开发与自动化实践。",
     icon: siPython,
   },
   react: {
@@ -91,19 +91,19 @@ const categoryDisplayMeta: Record<string, CategoryDisplayMeta> = {
     icon: siReact,
   },
   "react-native": {
-    description: "跨端组件、原生能力、导航与性能优化。",
+    description: "跨端组件、布局、状态与移动端工程实践。",
     icon: siReact,
   },
   springboot: {
-    description: "Spring Boot 应用、配置、数据访问与服务治理。",
+    description: "后端工程、配置、安全、测试与部署。",
     icon: siSpringboot,
   },
   typescript: {
-    description: "类型系统、泛型、工程约束与大型项目实践。",
+    description: "类型系统、工程配置与大型项目维护。",
     icon: siTypescript,
   },
   vue: {
-    description: "组合式 API、响应式系统、路由与生态实践。",
+    description: "组合式 API、响应式系统、路由与构建优化。",
     icon: siVuedotjs,
   },
 };
