@@ -1,7 +1,12 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
 import { NeonPanel } from "@/components/neon-panel";
 import type { CategoryGridItem } from "@/lib/content/category-display";
+
+type CategoryAccentStyle = CSSProperties & {
+  "--category-accent": string;
+};
 
 export function CategoryGrid({ categories }: { categories: CategoryGridItem[] }) {
   if (categories.length === 0) {
@@ -48,7 +53,7 @@ export function CategoryGrid({ categories }: { categories: CategoryGridItem[] })
                     borderColor: category.accent,
                     color: category.accent,
                     "--category-accent": category.accent,
-                  }}
+                  } as CategoryAccentStyle}
                 >
                   <svg
                     aria-hidden="true"
