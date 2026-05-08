@@ -68,7 +68,7 @@ const categoryDisplayMeta: Record<string, CategoryDisplayMeta> = {
   java: {
     description: "Java 语言基础、工程实践与生态要点。",
     accent: "#F89820",
-    icon: siSpringboot,
+    icon: fallbackIcon,
   },
   javascript: {
     description: "语言机制、浏览器 API 与现代工程基础。",
