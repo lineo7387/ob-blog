@@ -2,11 +2,17 @@ import { Container } from "@/components/container";
 import { AnimatedSection } from "@/components/motion/animated-section";
 import { NeonButton } from "@/components/neon-button";
 import { NeonPanel } from "@/components/neon-panel";
+import { CategoryGrid } from "@/features/blog/category-grid";
 import { PostList } from "@/features/blog/post-list";
-import { getFeaturedPosts } from "@/lib/content/posts";
+import { toCategoryGridItems } from "@/lib/content/category-display";
+import { getCategories, getFeaturedPosts } from "@/lib/content/posts";
 
 export default async function Home() {
-  const featuredPosts = await getFeaturedPosts();
+  const [featuredPosts, categories] = await Promise.all([
+    getFeaturedPosts(),
+    getCategories(),
+  ]);
+  const categoryItems = toCategoryGridItems(categories);
 
   return (
     <>
@@ -28,6 +34,9 @@ export default async function Home() {
             </NeonButton>
           </div>
         </AnimatedSection>
+      </Container>
+      <Container className="pb-20">
+        <CategoryGrid categories={categoryItems} />
       </Container>
       <Container className="pb-24">
         <NeonPanel className="mb-8">
