@@ -41,6 +41,24 @@ describe("SiteHeader", () => {
     expect(document.getElementById(mobileNavId ?? "")).not.toBeInTheDocument();
   });
 
+  test("keeps desktop navigation grouped on the right and preserves the full desktop theme switch", () => {
+    render(
+      <ThemeProvider>
+        <SiteHeader />
+      </ThemeProvider>,
+    );
+
+    const desktopNav = screen.getByRole("navigation", { name: "主导航" });
+    const themeButtons = screen.getAllByRole("button", { name: /切换主题/ });
+    const menuButton = screen.getByRole("button", { name: "打开导航菜单" });
+
+    expect(desktopNav).toHaveClass("justify-start");
+    expect(themeButtons).toHaveLength(2);
+    expect(themeButtons[0]).toHaveClass("h-10", "w-10");
+    expect(themeButtons[1]).toHaveClass("h-8", "w-16");
+    expect(menuButton).toHaveClass("h-10", "w-10");
+  });
+
   test("shows and hides the mobile navigation panel when the menu button is toggled", async () => {
     const user = userEvent.setup();
 
