@@ -1,0 +1,85 @@
+<h2>oh-blog 基础架构方案</h2>
+<p class="subtitle">请比较模块边界、未来可扩展性和第一版复杂度。可以点击一个方案，也可以直接在终端回复。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a-minimal" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. 极简本地博客</div>
+        <div class="mockup-body">
+          <div class="mock-nav">app/ routes</div>
+          <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px">
+            <div class="placeholder">content/posts/*.mdx</div>
+            <div class="placeholder">lib/posts.ts 读取 + 排序</div>
+            <div class="placeholder">components/* 展示</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 极简本地博客</h3>
+      <p>依赖最少、最快落地。适合第一版文章不多、功能简单，但未来替换 CMS 时页面会更容易被数据细节牵住。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b-layered" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. 推荐：内容抽象层</div>
+        <div class="mockup-body">
+          <div class="mock-nav">app/ routes</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+            <div class="placeholder">features/blog UI</div>
+            <div class="placeholder">components/design-system</div>
+            <div class="placeholder">lib/content API</div>
+            <div class="placeholder">content/posts/*.mdx</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 内容抽象层</h3>
+      <p>页面只依赖稳定的 Post 模型和查询函数。第一版仍然轻量，后续换 CMS、加标签、加搜索更顺滑。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c-platform" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. 内容平台雏形</div>
+        <div class="mockup-body">
+          <div class="mock-nav">app/ + api + admin-ready</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+            <div class="placeholder">content repository</div>
+            <div class="placeholder">tag/search indexes</div>
+            <div class="placeholder">route handlers</div>
+            <div class="placeholder">preview/draft hooks</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 内容平台雏形</h3>
+      <p>扩展性最强，但第一版会引入更多没马上用到的边界。适合已确定要做后台、搜索、草稿预览。</p>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons">
+  <div class="pros">
+    <h4>我的推荐</h4>
+    <ul>
+      <li>选 B：和你前面选的“本地抽象层，未来可换 CMS”一致。</li>
+      <li>保留根目录 app/，共享代码按责任放 components/、features/、lib/、content/。</li>
+      <li>用 Vitest 覆盖 content API 和纯组件，避免基础设施悄悄坏掉。</li>
+    </ul>
+  </div>
+  <div class="cons">
+    <h4>需要克制</h4>
+    <ul>
+      <li>不提前做后台、搜索、标签页、评论、订阅系统。</li>
+      <li>不把整个站点标成 Client Component。</li>
+      <li>不把 Vaporwave 效果散落成一次性 class，先沉到 token 和基础组件。</li>
+    </ul>
+  </div>
+</div>

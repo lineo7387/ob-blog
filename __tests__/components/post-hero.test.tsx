@@ -36,4 +36,14 @@ describe("PostHero", () => {
     expect(heading).toHaveClass("text-4xl");
     expect(heading).toHaveClass("sm:text-7xl");
   });
+
+  test("centers desktop title content with the same reading width as the article body", () => {
+    const { container } = render(<PostHero post={post} />);
+
+    const centeredColumn = container.querySelector(".mx-auto.sm\\:max-w-3xl");
+    const heading = container.querySelector("h1");
+
+    expect(centeredColumn).not.toBeNull();
+    expect(centeredColumn).toContainElement(heading);
+  });
 });

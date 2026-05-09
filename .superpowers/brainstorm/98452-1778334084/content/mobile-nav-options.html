@@ -1,0 +1,265 @@
+<style>
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .nav-card .card-image {
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(10, 0, 20, 0.96), rgba(24, 8, 48, 0.96)),
+      radial-gradient(circle at 50% 0%, rgba(255, 0, 255, 0.18), transparent 55%);
+  }
+
+  .phone {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    background: rgba(7, 1, 18, 0.98);
+    box-shadow: 0 0 0 1px rgba(0, 255, 255, 0.12), 0 0 30px rgba(0, 255, 255, 0.12);
+    overflow: hidden;
+  }
+
+  .header-shell {
+    border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .brand {
+    color: #7ff8ff;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+  }
+
+  .toolset {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toggle {
+    width: 38px;
+    height: 22px;
+    border: 1px solid rgba(0, 255, 255, 0.48);
+    position: relative;
+  }
+
+  .toggle::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background: #7ff8ff;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+  }
+
+  .menu-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    display: grid;
+    place-items: center;
+    color: #7ff8ff;
+    font-size: 14px;
+  }
+
+  .nav-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(0, 255, 255, 0.14);
+  }
+
+  .nav-row span,
+  .drawer-list span,
+  .sheet-link span {
+    display: block;
+    padding: 12px 10px;
+    text-align: center;
+    color: rgba(226, 226, 240, 0.9);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .drawer-panel {
+    margin: 0 14px 14px;
+    border: 1px solid rgba(217, 0, 255, 0.35);
+    background: rgba(23, 7, 42, 0.9);
+    box-shadow: 0 0 24px rgba(217, 0, 255, 0.14);
+  }
+
+  .drawer-list span {
+    text-align: left;
+    padding: 13px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .drawer-list span:first-child {
+    border-top: 0;
+  }
+
+  .sheet-tab {
+    padding: 0 14px 14px;
+  }
+
+  .sheet-card {
+    border: 1px solid rgba(0, 255, 255, 0.26);
+    background: rgba(19, 10, 34, 0.88);
+  }
+
+  .sheet-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .sheet-link:first-child {
+    border-top: 0;
+  }
+
+  .sheet-link strong {
+    padding-right: 14px;
+    color: #ff9d43;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 16px;
+  }
+
+  .eyebrow {
+    color: #ff9d43;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  .hero h4 {
+    margin: 12px 0 8px;
+    color: #7ff8ff;
+    font-size: 28px;
+    line-height: 1;
+    text-shadow: 0 0 16px rgba(0, 255, 255, 0.28);
+  }
+
+  .hero p {
+    margin: 0;
+    color: rgba(226, 226, 240, 0.82);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .mini-note {
+    margin-top: 14px;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 11px;
+  }
+</style>
+
+<h2>移动端导航方案对比</h2>
+<p class="subtitle">我先按这个博客现在的体量，做了 3 种更常见的移动端头部。点一下你更喜欢的方案，再在终端告诉我你的感觉。</p>
+
+<div class="cards">
+  <div class="card nav-card" data-choice="hamburger" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone">
+        <div class="header-shell">
+          <div class="topbar">
+            <div class="brand">oh-blog</div>
+            <div class="toolset">
+              <div class="toggle"></div>
+              <div class="menu-btn">≡</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow">journal</div>
+          <h4>技术频道</h4>
+          <p>头部极简，导航通过汉堡菜单展开，阅读页最干净。</p>
+          <div class="mini-note">适合内容型博客，最像常见移动站。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 汉堡菜单</h3>
+      <p>保留品牌、主题切换和菜单按钮，导航隐藏到展开层里。</p>
+    </div>
+  </div>
+
+  <div class="card nav-card" data-choice="inline-drawer" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone">
+        <div class="header-shell">
+          <div class="topbar">
+            <div class="brand">oh-blog</div>
+            <div class="toolset">
+              <div class="toggle"></div>
+              <div class="menu-btn">▾</div>
+            </div>
+          </div>
+          <div class="drawer-panel">
+            <div class="drawer-list">
+              <span>首页</span>
+              <span>博客</span>
+              <span>关于</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow">journal</div>
+          <h4>技术频道</h4>
+          <p>点击头部按钮后在页内展开导航面板，层级清楚，也更有“终端面板”味道。</p>
+          <div class="mini-note">视觉表达更强，但头部高度会变化。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 顶部抽屉</h3>
+      <p>还是按钮触发，但展开后就在头部下面露出面板，不用全屏遮罩。</p>
+    </div>
+  </div>
+
+  <div class="card nav-card" data-choice="priority-link" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="phone">
+        <div class="header-shell">
+          <div class="topbar">
+            <div class="brand">oh-blog</div>
+            <div class="toolset">
+              <div class="toggle"></div>
+              <div class="menu-btn">＋</div>
+            </div>
+          </div>
+          <div class="sheet-tab">
+            <div class="sheet-card">
+              <div class="sheet-link"><span>博客</span><strong>主要入口</strong></div>
+              <div class="sheet-link"><span>更多</span><strong>展开</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero">
+          <div class="eyebrow">journal</div>
+          <h4>技术频道</h4>
+          <p>直接把最常用入口留在头部，其他操作弱化成“更多”。</p>
+          <div class="mini-note">最快捷，但对当前只有 3 个导航项的站点来说有点过度设计。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 精简顶栏</h3>
+      <p>强调“博客”主入口，其他页面退到次级层级，更像 App 导航。</p>
+    </div>
+  </div>
+</div>
